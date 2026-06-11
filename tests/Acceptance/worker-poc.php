@@ -27,14 +27,15 @@ use Spiral\Grpc\Client\GrpcClient;
 use Spiral\RoadRunner\GRPC\Context;
 
 /** Append a diagnostic line to worker-poc.log next to this file. */
-$log = tr(...);
-// static function (string $message): void {
-//     \file_put_contents(
-//         __DIR__ . '/worker-poc.log',
-//         \sprintf("[%s] %s\n", \date('H:i:s'), $message),
-//         \FILE_APPEND,
-//     );
-// };
+$log =
+    // tr(...);
+static function (string $message): void {
+    \file_put_contents(
+        __DIR__ . '/worker-poc.log',
+        \sprintf("[%s] %s\n", \date('H:i:s'), $message),
+        \FILE_APPEND,
+    );
+};
 
 // RoadRunner passes its gRPC endpoint via RR_RPC (e.g. tcp://127.0.0.1:6001).
 // ext-grpc wants a bare host:port, so strip the tcp:// scheme.
@@ -81,7 +82,8 @@ try {
         $log('response sent for id=' . $request->getId());
     }
 } catch (\Throwable $e) {
-    tr($e);
+    // tr($e);
+    $log("error: " . $e->getMessage());
     \usleep(1000_000);
-    // goto entry;
+    goto entry;
 }

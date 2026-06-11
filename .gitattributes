@@ -19,3 +19,5 @@
 # Source code (`LLM\Skills\` namespace), packaged resources and CLI entry point.
 /src             -export-ignore
 /src/**          -export-ignore
+/packages        -export-ignore
+/packages/**     -export-ignore

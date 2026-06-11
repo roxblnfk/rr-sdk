@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dload xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="vendor/internal/dload/dload.xsd">
+    <actions>
+        <download software="buf" extract-path="runtime"/>
+        <download software="protoc" extract-path="runtime"/>
+        <download software="protoc-gen-php-grpc" extract-path="runtime"/>
+    </actions>
+
+    <!-- Well-known google/protobuf/*.proto definitions come from the
+         protocolbuffers/protobuf submodule at proto/third_party/protobuf,
+         not from dload — see .gitmodules. -->
+</dload>

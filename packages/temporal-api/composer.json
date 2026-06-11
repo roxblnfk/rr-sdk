@@ -1,0 +1,24 @@
+{
+    "name": "roadrunner-php/temporal-api-dto",
+    "description": "Temporal API protobuf DTOs (auto-generated from temporalio/api).",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "RoadRunner",
+            "homepage": "https://roadrunner.dev"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "google/protobuf": "^4.31 || ^5.34"
+    },
+    "autoload": {
+        "psr-4": {
+            "Temporal\\": "src/",
+            "GPBMetadata\\Temporal\\": "src/GPBMetadata/Temporal/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

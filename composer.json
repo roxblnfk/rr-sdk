@@ -10,32 +10,66 @@
         }
     ],
     "require": {
-        "php": ">=8.2"
+        "php": ">=8.2",
+        "ext-json": "*",
+        "google/protobuf": "^4.31 || ^5.34",
+        "jetbrains/phpstorm-attributes": "^1.0",
+        "psr/http-factory": "^1.0.1",
+        "psr/http-message": "^1.0.1 || ^2.0",
+        "psr/log": "^2.0 || ^3.0",
+        "psr/simple-cache": "2 - 3",
+        "ramsey/uuid": "^4.7",
+        "spiral/grpc-client": "^1.0@RC",
+        "spiral/roadrunner-grpc": "^3.6",
+        "symfony/polyfill-php83": "^1.29"
     },
     "require-dev": {
-        "buggregator/trap": "^1.10",
+        "buggregator/trap": "^1.15",
         "infection/infection": "^0.32",
-        "testo/testo": "0.1 - 1",
-        "testo/bridge-infection": "0.1 - 1",
+        "internal/dload": "^1.13",
+        "llm/skills": "^1.0",
+        "nyholm/psr7": "^1.8",
         "spiral/code-style": "^2.3",
+        "symfony/process": "^6.4 || ^7.0",
+        "testo/bridge-infection": "0.1 - 1",
+        "testo/testo": "0.1 - 1",
         "vimeo/psalm": "^7"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "RoadRunner\\": "src/"
+            "RoadRunner\\Sdk\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RoadRunner\\Tests\\": "tests/"
+            "RoadRunner\\Tests\\": "tests/",
+            "RoadRunner\\AppLogger\\DTO\\": "packages/roadrunner-api/src/AppLogger/",
+            "RoadRunner\\Centrifugal\\API\\DTO\\": "packages/roadrunner-api/src/Centrifugal/API/",
+            "RoadRunner\\Centrifugal\\Proxy\\DTO\\": "packages/roadrunner-api/src/Centrifugal/Proxy/",
+            "RoadRunner\\Common\\DTO\\": "packages/roadrunner-api/src/Common/",
+            "RoadRunner\\HTTP\\DTO\\": "packages/roadrunner-api/src/HTTP/",
+            "RoadRunner\\Informer\\DTO\\": "packages/roadrunner-api/src/Informer/",
+            "RoadRunner\\Jobs\\DTO\\": "packages/roadrunner-api/src/Jobs/",
+            "RoadRunner\\KV\\DTO\\": "packages/roadrunner-api/src/KV/",
+            "RoadRunner\\Lock\\DTO\\": "packages/roadrunner-api/src/Lock/",
+            "RoadRunner\\Metrics\\DTO\\": "packages/roadrunner-api/src/Metrics/",
+            "RoadRunner\\Resetter\\DTO\\": "packages/roadrunner-api/src/Resetter/",
+            "RoadRunner\\Service\\DTO\\": "packages/roadrunner-api/src/Service/",
+            "RoadRunner\\Status\\DTO\\": "packages/roadrunner-api/src/Status/",
+            "RoadRunner\\TCP\\DTO\\": "packages/roadrunner-api/src/TCP/",
+            "RoadRunner\\Temporal\\DTO\\": "packages/roadrunner-api/src/Temporal/",
+            "RoadRunner\\Websockets\\DTO\\": "packages/roadrunner-api/src/Websockets/",
+            "Temporal\\": "packages/temporal-api/src/",
+            "GPBMetadata\\Temporal\\": "packages/temporal-api/src/GPBMetadata/Temporal/"
         }
     },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "infection/extension-installer": true
+            "infection/extension-installer": true,
+            "llm/skills": true
         }
     },
     "scripts": {
@@ -44,6 +78,8 @@
         "psalm": "psalm",
         "psalm:baseline": "psalm --set-baseline=psalm-baseline.xml",
         "psalm:ci": "psalm --output-format=github --shepherd --show-info=false --stats --threads=4",
+        "proto:generate": "bash scripts/generate.sh",
+        "proto:scaffold": "bash scripts/scaffold-packages.sh",
         "test": [
             "@putenv XDEBUG_MODE=coverage",
             "testo --color=always"

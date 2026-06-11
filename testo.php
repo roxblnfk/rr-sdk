@@ -4,33 +4,15 @@ declare(strict_types=1);
 
 use Testo\Application\Config\ApplicationConfig;
 use Testo\Application\Config\FinderConfig;
-use Testo\Application\Config\SuiteConfig;
-use Testo\Codecov\CodecovPlugin;
-use Testo\Codecov\Config\CoverageLevel;
-use Testo\Codecov\Report\CloverReport;
-use Testo\Codecov\Report\PhpUnitXmlReport;
 
 return new ApplicationConfig(
     src: new FinderConfig(
         include: ['src'],
     ),
-    suites: [
-        new SuiteConfig(
-            name: 'Unit',
-            location: new FinderConfig(
-                include: [__DIR__ . '/tests/Unit'],
-            ),
-        ),
-    ],
-    plugins: [
-        new CodecovPlugin(
-            level: CoverageLevel::Line,
-            reports: [
-                new CloverReport(__DIR__ . '/runtime/clover.xml', 'Skills'),
-                new PhpUnitXmlReport(
-                    outputDir: __DIR__ . '/runtime/infection/coverage-xml',
-                ),
-            ],
-        ),
-    ],
+    // Suite каждого модуля описаны в его tests/<Module>/suites.php и собираются
+    // здесь. Новый модуль — добавить require его suites.php в array_merge ниже.
+    suites: \array_merge(
+        require __DIR__ . '/tests/Worker/suites.php',
+        require __DIR__ . '/tests/KeyValue/suites.php',
+    ),
 );

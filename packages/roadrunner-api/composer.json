@@ -1,0 +1,38 @@
+{
+    "name": "roadrunner-php/roadrunner-api-dto",
+    "description": "RoadRunner protobuf DTOs (auto-generated from roadrunner-server/api).",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "RoadRunner",
+            "homepage": "https://roadrunner.dev"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "google/protobuf": "^4.31 || ^5.34"
+    },
+    "autoload": {
+        "psr-4": {
+            "RoadRunner\\AppLogger\\DTO\\": "src/AppLogger/",
+            "RoadRunner\\Centrifugal\\API\\DTO\\": "src/Centrifugal/API/",
+            "RoadRunner\\Centrifugal\\Proxy\\DTO\\": "src/Centrifugal/Proxy/",
+            "RoadRunner\\Common\\DTO\\": "src/Common/",
+            "RoadRunner\\HTTP\\DTO\\": "src/HTTP/",
+            "RoadRunner\\Informer\\DTO\\": "src/Informer/",
+            "RoadRunner\\Jobs\\DTO\\": "src/Jobs/",
+            "RoadRunner\\KV\\DTO\\": "src/KV/",
+            "RoadRunner\\Lock\\DTO\\": "src/Lock/",
+            "RoadRunner\\Metrics\\DTO\\": "src/Metrics/",
+            "RoadRunner\\Resetter\\DTO\\": "src/Resetter/",
+            "RoadRunner\\Service\\DTO\\": "src/Service/",
+            "RoadRunner\\Status\\DTO\\": "src/Status/",
+            "RoadRunner\\TCP\\DTO\\": "src/TCP/",
+            "RoadRunner\\Temporal\\DTO\\": "src/Temporal/",
+            "RoadRunner\\Websockets\\DTO\\": "src/Websockets/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
